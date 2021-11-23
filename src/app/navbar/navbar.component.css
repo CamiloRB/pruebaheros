@@ -1,0 +1,7 @@
+.IzquierdaNav{
+    justify-content: flex-end;
+}
+
+.ArregloFlexBox{
+    flex-grow: 0;
+}

@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "nombre": "Spiderman",
+        "img": "spiderman.jpg",
+        "descrip": "El hombre que fue mordido por una araña",
+        "like": 30,
+        "dislike": 50
+    },
+    {
+        "id": 2,
+        "nombre": "Batman",
+        "img": "batman.jpg",
+        "descrip": "El hombre que tiene como super poder ser rico",
+        "like": 30,
+        "dislike": 40
+    },
+    {
+        "id": 3,
+        "nombre": "Thor",
+        "img": "thor.jpg",
+        "descrip": "El hijo de odin Dios del trueno",
+        "like": 10,
+        "dislike": 9
+    },
+    {
+        "id": 4,
+        "nombre": "Superman",
+        "img": "superman.jpg",
+        "descrip": "El unico kriptoniano en la tierra",
+        "like": 10,
+        "dislike": 30
+    },
+    {
+        "id": 5,
+        "nombre": "Iron man",
+        "img": "ironman.jpg",
+        "descrip": "El hombre de acero",
+        "like": 20,
+        "dislike": 10
+    }
+]

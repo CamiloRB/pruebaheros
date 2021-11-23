@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="container containerP">
+
+    <div class="Home">
+      <!--Navbar Inicio-->
+      <app-navbar></app-navbar>
+      <!--Navbar Fin-->
+      
+      <!--Inicio Votacion-->
+      <div *ngFor="let Heroe of ArregloHeroes; last as isLast">
+        <div *ngIf="isLast">
+          <div style="background-image: url(../assets/img/{{Heroe.img}}); background-size: cover;">
+            
+            <div *ngIf="!Votado">
+              <div style="background-color: rgba(0, 0, 0, 0.508);">
+                <div class="card text-white p-5 cartaVoto">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ Heroe.nombre }}</h5>
+                    <p class="card-text">{{ Heroe.descrip }}</p>
+                    <p class="card-text">¿Cuál es tu voto?</p>
+                  </div>
+                  <div class="card-footer">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default" style="background-color: rgb(106, 225, 164);" (click)="like(Heroe.id)">
+                        <img class="navbar-brand mx-2" src="../assets/img/like.png" width="25px" height="35px">
+                      </button>
+                      <button type="button" class="btn btn-default" style="background-color: rgb(255, 227, 115);" (click)="dislike(Heroe.id)">
+                        <img class="navbar-brand mx-2" src="../assets/img/dislike.png" width="25px" height="35px">
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div *ngIf="Votado">
+              <div style="background-color: rgba(0, 0, 0, 0.508);">
+                <div class="card text-white p-5 cartaVoto">
+                  <div class="card-body">
+                    <ng-container *ngIf="Gusto; else disl">
+                      <div class="likeV mr-2">
+                        <img class="navbar-brand mx-2" src="../assets/img/like.png" width="25px" height="35px">
+                      </div>
+                      <p> Su voto ha sido registrado</p>
+                    </ng-container>
+                    <ng-template #disl>
+                      <div class="dislikeV mr-2">
+                        <img class="navbar-brand mx-2" src="../assets/img/dislike.png" width="25px" height="35px">
+                      </div>
+                      <p> Su voto ha sido registrado</p>
+                    </ng-template>
+                    <h5 class="card-title">{{ Heroe.nombre }}</h5>
+                    <p class="card-text">{{ Heroe.descrip }}</p>
+                    <p class="card-text">Gracias por la colaboracion</p>
+                  </div>
+                  <div class="card-footer">
+                    <div class="btn-group">
+                      <button type="button" class="buttonStyle" (click)="votarDenuevo()">
+                        Volver a votar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="Union">
+              <div style="height: 20px; background-color: rgb(106, 225, 164); width: {{ ((Heroe.like * 100)/(Heroe.like+Heroe.dislike)).toFixed() }}%;"></div>
+              <div style="height: 20px; background-color: rgb(255, 227, 115); width: {{ ((Heroe.dislike * 100)/(Heroe.like+Heroe.dislike)).toFixed() }}%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Fin Votacion-->
+    </div>
+      
+    <!--Inicio cards Heroes-->
+    <div class="flexOpciones bg-light mt-4">
+      <h2 class="titulo2 m-2">
+        Lorem Ipsum. Dolor
+        <h1 class="titulo1">
+          IP lorem ip.
+        </h1>
+      </h2>
+    </div>
+
+    <h1 class="titulo1 pt-5 pb-3">Super Heroes Anteriores</h1>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 py-2" *ngFor="let Heroe of ArregloHeroes; last as isLast">
+        <div class="card bg-dark text-white tamaCard" *ngIf=" !isLast">
+          <img class="card-img" src="../assets/img/{{ Heroe.img }}" alt="Card image">
+          <div class="card-img-overlay opacidad">
+
+            <ng-container *ngIf="Heroe.like >= Heroe.dislike; else Dislike">
+              <div class="like mr-2">
+                <img class="navbar-brand mx-2" src="../assets/img/like.png" width="25px" height="35px">
+              </div>
+            </ng-container>
+            <ng-template #Dislike>
+              <div class="dislike mr-2">
+                <img class="navbar-brand mx-2" src="../assets/img/dislike.png" width="25px" height="35px">
+              </div>
+            </ng-template>
+
+            <div>
+              <h5 class="card-title titulo3">{{ Heroe.nombre }}</h5>
+              <p class="card-text textoCard">{{ Heroe.descrip }}</p>
+              <button class="buttonStyle"> Ver detalle </button>
+            </div>
+          </div>
+          <div class="Union">
+            <div style="height: 20px; background-color: rgb(106, 225, 164); width: {{ ((Heroe.like * 100)/(Heroe.like+Heroe.dislike)).toFixed() }}%;"></div>
+            <div style="height: 20px; background-color: rgb(255, 227, 115); width: {{ ((Heroe.dislike * 100)/(Heroe.like+Heroe.dislike)).toFixed() }}%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fin cards Heroes-->
+
+    <!--Fotter Inicio-->
+    <app-footer></app-footer>
+    <!--Fotter Fin-->
+
+  </div>
+</div>
